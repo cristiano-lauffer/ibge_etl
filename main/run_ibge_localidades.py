@@ -46,6 +46,8 @@ def importar_dados_municipios():
         obj_list
     )
 
+    conn.execute('call staging.delete_insert_municipios();')
+
 
 if __name__ == '__main__':
     HelperFuncoes.exec_funcao(importar_dados_municipios)

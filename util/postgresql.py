@@ -38,3 +38,16 @@ class PostgreSqlConnection:
         self.connection.commit()
         cursor.close()
         self.connection.close()
+
+    def execute(self, str_sql):
+        self.connection = psycopg2.connect(
+            host=self.config.host,
+            database=self.config.database,
+            user=self.config.user,
+            password=self.config.password
+        )
+        cursor = self.connection.cursor()
+        cursor.execute(str_sql)
+        self.connection.commit()
+        cursor.close()
+        self.connection.close()
